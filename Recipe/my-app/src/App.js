@@ -10,26 +10,30 @@ const LazyRecipeList = React.lazy(()=> import('./Components/RecipeList'))
 // const Lazyregistratione = React.lazy(()=> import('./Components/registration'))
 // const LazyErrorPage = React.lazy(()=> import('./'))
 import RecipeArr from './Context/RecipesContext';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import React, { Suspense, useState } from 'react'
 
 function App (){
-  const rec={
-    id:5,
-    name:'chavi',
-    time: 5
+const [recipes, setRecipes] = useState([
+    {
+      id: 1111,
+      name: "cookies",
+      time: 60,
+      ingridients: ["eggs", "flour"],
+      category: 2,
+      favorite: false
+    }
+  ])
 
-
-  }
   return (
-   
-    <RecipeArr.Provider value={rec}>
+<BrowserRouter>
+    <RecipeArr.Provider value={{recipes,setRecipes}}>
    <p style={{ textAlign:'center',border: "1px solid red" }}>
           
            <Link to={'/'}>Home</Link><br />
            <Link to={'/AppBar'}>AppBar</Link><br />
            <Link to={'/Login'}>Login</Link><br />
            <Link to={'/RecipeList'}>RecipeList</Link><br />
-         
-
          </p>
          <Routes>
            <Route path='/' element={<Suspense fallback={"loading..."}><LazyHome /></Suspense> } />
@@ -45,6 +49,7 @@ function App (){
            </Route>
          </Routes>
    </RecipeArr.Provider>
+</BrowserRouter>
   );
 }
 
