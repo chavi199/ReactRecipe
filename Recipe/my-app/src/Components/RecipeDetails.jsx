@@ -1,6 +1,8 @@
-import React,{useContext,useEffect} from 'react'
 import RecipeArr from '../Context/RecipesContext'
+import React,{useContext,useEffect,useState} from 'react'
 import { useParams } from "react-router-dom"
+
+
 const  RecipeDetails=()=>{
     const {id}=useParams()
     const {recipes,setRecipes}=useContext(RecipeArr)

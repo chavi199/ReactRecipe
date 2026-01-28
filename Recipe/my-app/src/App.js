@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { Suspense } from 'react';
-import { Link, Route, Routes, UNSAFE_createClientRoutesWithHMRRevalidationOptOut } from 'react-router-dom'
+import RecipeArr from './Context/RecipesContext';
+import { BrowserRouter, Route, Routes,Link } from 'react-router-dom'
+// import { Suspense, useState } from 'react'
+import React, { Suspense,useState } from 'react';
+
+// import React, { Suspense } from 'react';
+// import { Link, Route, Routes, UNSAFE_createClientRoutesWithHMRRevalidationOptOut } from 'react-router-dom'
 const LazyHome = React.lazy(()=> import('./Components/Home'))
 const LazyAppBar = React.lazy(()=> import('./Components/AppBar'))
 const LazyLogin = React.lazy(()=> import('./Components/Login'))
@@ -9,9 +14,7 @@ const LazyRecipeDetails = React.lazy(()=> import('./Components/RecipeDetails'))
 const LazyRecipeList = React.lazy(()=> import('./Components/RecipeList'))
 // const Lazyregistratione = React.lazy(()=> import('./Components/registration'))
 // const LazyErrorPage = React.lazy(()=> import('./'))
-import RecipeArr from './Context/RecipesContext';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import React, { Suspense, useState } from 'react'
+
 
 function App (){
 const [recipes, setRecipes] = useState([
@@ -26,7 +29,7 @@ const [recipes, setRecipes] = useState([
   ])
 
   return (
-<BrowserRouter>
+// {/* <BrowserRouter> */}
     <RecipeArr.Provider value={{recipes,setRecipes}}>
    <p style={{ textAlign:'center',border: "1px solid red" }}>
           
@@ -49,7 +52,7 @@ const [recipes, setRecipes] = useState([
            </Route>
          </Routes>
    </RecipeArr.Provider>
-</BrowserRouter>
+// </BrowserRouter>
   );
 }
 
